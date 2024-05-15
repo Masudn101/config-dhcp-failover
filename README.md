@@ -1,7 +1,6 @@
-# config-dhcp-failover
-```
+Configuring DHCP failover on Windows Server involves several steps. Below is a PowerShell script that automates these steps:
 
-
+```powershell
 # Define parameters for DHCP failover
 $PrimaryServerName = "PrimaryDHCP"
 $PrimaryServerIP = "192.168.1.10"
@@ -31,5 +30,10 @@ Add-DhcpServerv4Failover -Name $FailoverName -ScopeId $ScopeName `
 
 # Verify DHCP failover configuration
 Get-DhcpServerv4Failover -Name $FailoverName
-
 ```
+
+This script first defines parameters such as server names, IP addresses, scope name, failover name, failover mode, maximum client lead time, state switchover interval, and shared secret. Then it imports the DHCP module and adds the primary and secondary DHCP servers. Finally, it configures DHCP failover with the specified parameters and verifies the configuration.
+
+Make sure to replace the placeholders (`$PrimaryServerName`, `$PrimaryServerIP`, `$SecondaryServerName`, `$SecondaryServerIP`, `$ScopeName`, `$FailoverName`, `$MaximumClientLeadTime`, `$StateSwitchoverInterval`, and `$SharedSecret`) with your actual values.
+
+Save the script with a `.ps1` extension and execute it on your Windows Server with appropriate administrative privileges.
